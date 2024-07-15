@@ -1,9 +1,11 @@
 import {
+  Alert,
   Avatar,
   Button,
   Grid,
   Link,
   Paper,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -22,11 +24,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleLogin();
-  };
-
-  const handleLogin = async () => {
-    const res = register(userName, password, confirmPassword);
+    const response = await register(userName, password, confirmPassword);
+    if (response?.isSuccess) {
+      navigate("/login");
+    } else {
+    }
   };
 
   return (
@@ -114,6 +116,21 @@ const Register = () => {
           </Typography>
         </Grid>
       </Paper>
+      {/* <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          open={showSnackBar}
+          key={"topRight"}
+          sx={{ marginTop: "50px" }}
+        >
+          <Alert
+            onClose={handleSnackBarClose}
+            severity="success"
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            {snackBarMessage}
+          </Alert>
+        </Snackbar> */}
     </Grid>
   );
 };
