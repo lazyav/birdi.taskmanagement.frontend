@@ -44,6 +44,7 @@ const AddTask = () => {
       title,
       description,
       dueDate,
+      statusId: taskStatusId,
     };
     await addTask(task);
     setLoading(false);

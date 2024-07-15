@@ -8,12 +8,12 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
   const navigate = useNavigate();
 
   const addToken = async (token) => {
     setToken(token);
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
     navigate("dashboard");
     return;
   };

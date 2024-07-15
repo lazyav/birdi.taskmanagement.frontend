@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     const response = await login(userName, password);
     if (response.isSuccess) {
-      localStorage.getItem(response.data.accessToken);
+      sessionStorage.setItem("token", response.data.accessToken);
       navigate("/dashboard");
     }
   };
